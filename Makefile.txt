@@ -1,0 +1,14 @@
+CC=gcc
+CFLAGS=`mysql_config --cflags`
+LIBS=`mysql_config --libs`
+
+all: database_setup atm_app
+
+database_setup: database_setup.c
+	$(CC) $(CFLAGS) -o database_setup database_setup.c $(LIBS)
+
+atm_app: atm_app.c
+	$(CC) $(CFLAGS) -o atm_app atm_app.c $(LIBS)
+
+clean:
+	rm -f database_setup atm_app
